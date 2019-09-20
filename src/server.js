@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 
 import React from "react";
+import serialize from "serialize-javascript";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
@@ -55,12 +56,13 @@ function htmlTemplate( reactDom, reduxState, helmetData ) {
             ${ helmetData.title.toString( ) }
             ${ helmetData.meta.toString( ) }
             <title>React SSR</title>
+            <link rel="stylesheet" type="text/css" href="./styles.css" />
         </head>
         
         <body>
             <div id="app">${ reactDom }</div>
             <script>
-                window.REDUX_DATA = ${ JSON.stringify( reduxState ) }
+                window.REDUX_DATA = ${ serialize( reduxState, { isJSON: true } ) }
             </script>
             <script src="./app.bundle.js"></script>
         </body>
