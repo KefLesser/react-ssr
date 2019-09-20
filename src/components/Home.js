@@ -14,7 +14,7 @@ class Home extends React.Component {
 
         return (
             <div className="wrapper">
-                <h2>Server side rendered data.  Note: no requests in the browser</h2>
+                <h2>Server side rendered data.  NOTE: no requests in the browser</h2>
                 <ul>
                     { circuits.map( ( { circuitId, circuitName, Location } ) => (
                         <li key={ circuitId } >{ circuitName } - { Location.locality }, { Location.country }</li>
