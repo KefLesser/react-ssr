@@ -5,6 +5,7 @@ import { fetchData } from "../store";
 class Home extends React.Component {
     componentDidMount( ) {
         if ( this.props.circuits.length <= 0 ) {
+            console.log( "fetchData" );
             this.props.fetchData( );
         }
     }

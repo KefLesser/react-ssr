@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
-import { fetchCircuits } from "./api";
+import { fetchRequest } from "./api";
 
 export const initializeSession = ( ) => ( {
     type: "INITIALIZE_SESSION",
@@ -11,8 +11,7 @@ const storeData = ( data ) => ( {
     data,
 } );
 
-export const fetchData = ( ) => ( dispatch ) =>
-    fetchCircuits( ).then( res => dispatch( storeData( res ) ) );
+export const fetchData = ( ) => ( dispatch ) => fetchRequest().then( res => dispatch( storeData( res ) ) );
 
 const sessionReducer = ( state = false, action ) => {
     switch ( action.type ) {
@@ -23,6 +22,7 @@ const sessionReducer = ( state = false, action ) => {
 };
 
 const dataReducer = ( state = [ ], action ) => {
+    console.log( "store dataReducer" );
     switch ( action.type ) {
         case "STORE_DATA":
             return action.data;

@@ -16,6 +16,6 @@ const jsx = (
         </Router>
     </ReduxProvider>
 );
-
+console.log( "client entry point" );
 const app = document.getElementById( "app" );
 ReactDOM.hydrate( jsx, app );

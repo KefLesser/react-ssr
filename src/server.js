@@ -45,7 +45,7 @@ app.get( "/*", ( req, res ) => {
     } );
 } );
 
-app.listen( 2048 );
+app.listen( 2048, "0.0.0.0" );
 
 function htmlTemplate( reactDom, reduxState, helmetData ) {
     return `
